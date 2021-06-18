@@ -130,21 +130,43 @@
     <div>
         <nav aria-label="Page navigation">
             <ul class="pagination">
-                <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
+<%--                向前翻页--%>
+                <c:if test="${pb.currentPage == 1}">
+                    <li class="disabled">
+                </c:if>
+                <c:if test="${pb.currentPage != 1}">
+                    <li>
+                </c:if>
+                        <a href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${pb.currentPage - 1}&rows=5" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
                 <c:forEach begin="1" end="${pb.totalPage}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${i}&rows=5">${i}</a></li>
+                    <!--页码标签选中状态-->
+                    <c:if test="${pb.currentPage == i}">
+                        <li class="active">
+                    </c:if>
+                    <c:if test="${pb.currentPage != i}">
+                        <li>
+                    </c:if>
+                            <a href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${i}&rows=5">
+                                    ${i}
+                            </a>
+                        </li>
                 </c:forEach>
 
 
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
+                <c:if test="${pb.currentPage == pb.totalPage}">
+                    <li class="disabled">
+                </c:if>
+                <c:if test="${pb.currentPage != pb.totalPage}">
+                    <li>
+                </c:if>
+                        <a href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${pb.currentPage + 1}&rows=5" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
                 <span style="font-size: 20px;margin-left: 15px">
                     共${pb.totalCount}条记录，共${pb.totalPage}页
                 </span>

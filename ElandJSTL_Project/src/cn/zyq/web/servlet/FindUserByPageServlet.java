@@ -18,9 +18,15 @@ public class FindUserByPageServlet extends HttpServlet {
         // 1.获取参数
         String currentPage = request.getParameter("currentPage");//当前页码
         String rows = request.getParameter("rows");//每页查询的条数
+        if(currentPage == null || "".equals(currentPage)){
+            currentPage = "1";
+        }
+        if(rows == null || "".equals(rows)){
+            rows = "5";
+        }
 //        String rows = "5";
         // 2.调用service查询
-        UserService service = new UserServiceImp();
+        UserServiceImp service = new UserServiceImp();
         PageBean<User> pb = service.findUserByPage(currentPage, rows);
 //        System.out.println(pb);
         //3.将pageBean存入request

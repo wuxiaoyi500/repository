@@ -9,7 +9,7 @@ public class PageBean<T> {
     private int totalCount; //总记录数
     private int totalPage; // 总页码
     private List<User> list; //每页的数据
-    private int currentPages; //当前页码
+    private int currentPage; //当前页码
     private int rows; //每页显示的记录数
 
     @Override
@@ -18,7 +18,7 @@ public class PageBean<T> {
                 "totalCount=" + totalCount +
                 ", totalPage=" + totalPage +
                 ", list=" + list +
-                ", currentPages=" + currentPages +
+                ", currentPage=" + currentPage +
                 ", rows=" + rows +
                 '}';
     }
@@ -47,12 +47,12 @@ public class PageBean<T> {
         this.list = list;
     }
 
-    public int getCurrentPages() {
-        return currentPages;
+    public int getCurrentPage() {
+        return currentPage;
     }
 
-    public void setCurrentPages(int currentPages) {
-        this.currentPages = currentPages;
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
     }
 
     public int getRows() {
