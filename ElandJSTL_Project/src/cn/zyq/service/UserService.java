@@ -4,6 +4,7 @@ import cn.zyq.domain.PageBean;
 import cn.zyq.domain.User;
 
 import java.util.List;
+import java.util.Map;
 
 /*
 * 用户表业务接口
@@ -23,6 +24,6 @@ public interface UserService {
     void changeUser(User user);
     //选定删除
     void delSelected(String[] uid);
-    //分页查询
-    PageBean<User> findUserByPage(String currentPage, String rows);
+    //分页条件查询
+    PageBean<User> findUserByPage(String _currentPage, String _rows, Map<String, String[]> condition);
 }
