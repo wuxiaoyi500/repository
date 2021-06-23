@@ -8,7 +8,7 @@ import java.io.IOException;
 //转发访问才被执行，直接访问过滤器不被执行
 //@WebFilter(value = "/index.jsp",dispatcherTypes = DispatcherType.FORWARD)
 //转发和直接访问都拦截
-@WebFilter(value = "/index.jsp",dispatcherTypes = {DispatcherType.FORWARD,DispatcherType.REQUEST})
+//@WebFilter(value = "/index.jsp",dispatcherTypes = {DispatcherType.FORWARD,DispatcherType.REQUEST})
 public class FilterDemo05 implements Filter {
     public void destroy() {
     }
