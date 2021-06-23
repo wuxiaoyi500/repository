@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
             //登录成功
             //将用户存入session
             session.setAttribute("user",loginUer);
-            response.sendRedirect(request.getContextPath()+"/index.jsp");
+            response.sendRedirect(request.getContextPath()+"/index2.jsp");
         }
         if(loginUer == null){
             //登录失败

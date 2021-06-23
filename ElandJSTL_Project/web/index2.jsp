@@ -20,8 +20,8 @@
 
 <div align="center">
     <a
-            href="${pageContext.request.contextPath}/login.jsp"
-            style="text-decoration:none;font-size:33px">登录，查询所有用户信息
+            href="${pageContext.request.contextPath}/findUserByPageServlet"
+            style="text-decoration:none;font-size:33px">${user.name}欢迎您，查询用户信息
     </a>
 </div>
 </body>
