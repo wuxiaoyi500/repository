@@ -25,48 +25,44 @@ public class SensitiveWordsFilter implements Filter {
             public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
                 //增强paramter方法
                 //判断是否是paramter方法
-                if (method.getName().equals("getParamter")){
+                if (method.getName().equals("getParameter")){
                     //增强返回值
-                    String obj = (String) method.invoke(req,objects);
-                    if (obj != null){
-                        for (String s : list){
-                            if (obj.contains(s)){
+                    String value = (String) method.invoke(req,objects);
+                    if (value != null && !"".equals(value)){
+                        for (String str : list){
+                            if (value.contains(str)){
                                 //如果包含敏感字符，则替换成***
-                                obj.replaceAll(s,"***");
+                                value = value.replaceAll(str,"***");
                             }
                         }
                     }
-                    return obj;
-                }else{
-                    String obj = (String) method.invoke(req, objects);
-                    return obj;
+                    return value;
                 }
-
-
+                return method.invoke(req,objects);
             }
         });
         chain.doFilter(proxy, resp);
     }
     private List<String> list = new ArrayList<>();//敏感词汇集合
     public void init(FilterConfig config) throws ServletException {
-        //加载文件，读取文件，将文件的每一行数据读取到集合中
-        //1.获取文件的真实路径
-        ServletContext context = config.getServletContext();
-        String realPath = context.getRealPath("/WEB-INF/classes/SensitiveWords.txt");
         try {
+            //加载文件，读取文件，将文件的每一行数据读取到集合中
+            //1.获取文件的真实路径
+            ServletContext context = config.getServletContext();
+            String realPath = context.getRealPath("/WEB-INF/classes/SensitiveWords.txt");
             //流创建出来都是GBK编码的，如果和文件编码不符，就会乱码
             BufferedReader br = new BufferedReader(new FileReader(realPath));
             String line = null;
             while((line = br.readLine()) != null){
                 list.add(line);
             }
+            br.close();
+            System.out.println(list);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(list);
-
     }
 
 }
