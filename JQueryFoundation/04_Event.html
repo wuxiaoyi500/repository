@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+<!--    入口函数-->
+    <script>
+        // JS写法
+        // window.onload = function () {
+        //     document.getElementById("b1").onclick = function () {
+        //         alert(" you are sb")
+        //     }
+        // }
+        // JQ写法
+        // $(function () {
+        //     $('#b1').click(function () {
+        //         alert("you are handsome boy")
+        //     })
+        // })
+        // window.onload只能定义一次，后定义的覆盖先定义的
+        // $(function(){})可以定义多次
+        //样式控制
+        $(function () {
+            // $("#div1").css("background-color","red")
+            $("#div1").css("backgroundColor","pink")
+        })
+    </script>
+</head>
+<body>
+    <div id="div1">div1.......1</div>
+    <div id="div2">div2.......2</div>
+<input type="button" value="click me" id="b1">
+<!--    JS写法，绑定单击事件-->
+<!--<script>-->
+<!--    document.getElementById("b1").onclick = function () {-->
+<!--        alert("you are sb")-->
+<!--    }-->
+<!--</script>-->
+
+<!--JQ写法，绑定单击事件-->
+<!--<script>-->
+<!--    $("#b1").click(function () {-->
+<!--        alert("you are handsom boy")-->
+<!--    })-->
+<!--</script>-->
+</body>
+</html>
