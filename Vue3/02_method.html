@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>method</title>
+    <script src="js/vue.global.js"></script>
+</head>
+<body>
+    <div id="app" class="demo02"></div>
+    <script>
+        //我们可以在组件中添加方法，使用 methods 选项，该选项包含了所需方法的对象。
+        // 以下实例我们添加了 methods 选项，选项中包含了 increment() 方法：
+        const app = Vue.createApp({
+            data(){
+                return { count: 4 }
+            },methods:{
+                increment() {
+                    this.count++
+                }
+            }
+        })
+        const vm = app.mount('#app')
+        document.write(vm.count)
+        document.write('<br>')
+        vm.increment()
+        document.write(vm.count)
+        document.write('<br>')
+    </script>
+</body>
+</html>

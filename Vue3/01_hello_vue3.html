@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VUE初探</title>
+    <script src="js/vue.global.js"></script>
+</head>
+<body>
+    <div id="hello-vue" class="demo01">{{ message }}</div>
+    <div id="app" class="demo02"></div>
+    <script>
+        // 每个 Vue 应用都是通过用 createApp 函数创建一个新的应用实例开始的：
+        // const app = Vue.createApp({/*实例*/});
+        //传递给 createApp 的选项用于配置根组件。在使用 mount() 挂载应用时，该组件被用作渲染的起点。
+        // Vue.createApp(HelloVueApp).mount('#hello-vue')
+        //createApp 的参数是根组件（HelloVueApp），在挂载应用时，该组件是渲染的起点。
+        // 一个应用需要被挂载到一个 DOM 元素中，以上代码使用 mount('#hello-vue') 将 Vue 应用 HelloVueApp 挂载到 <div id="hello-vue"></div> 中
+        const HelloVueAPP = {
+            data(){
+                return{
+                    message:'Hello Vue!'
+                }
+            }
+        }
+        Vue.createApp(HelloVueAPP).mount('#hello-vue')
+        //mount('#hello-vue') 将 Vue 应用 HelloVueApp 挂载到<div id="hello-vue"></div> 中
+        // {{ }} 用于输出对象属性和函数返回值。
+        // {{ message }} 对应应用中 message 的值。
+
+
+        // data 选项是一个函数。Vue 在创建新组件实例的过程中调用此函数。
+        // 它应该返回一个对象，然后 Vue 会通过响应性系统将其包裹起来，并以 $data 的形式存储在组件实例中。
+        const app = Vue.createApp({
+            data(){
+                return{ count: 4 }
+            }
+        })
+        const vm = app.mount('#app')
+        document.write(vm.$data.count)
+        document.write('<br>')
+        document.write(vm.count)
+        document.write('<br>')
+        // 修改 vm.count 的值也会更新 $data.count
+        vm.count = 5
+        document.write(vm.$data.count)
+        document.write('<br>')
+        //反之亦然
+        vm.$data.count = 6
+        document.write(vm.count)
+        document.write('<br>')
+
+
+    </script>
+</body>
+</html>
