@@ -48,5 +48,94 @@
             }
         }).mount("#demo02")
     </script>
+    <!--  <template> 中使用 v-for： -->
+    <div id="fortemplate">
+        <ul>
+            <template v-for="site in sites">
+                <li>{{ site.text }}</li>
+                <li>-*-*-*-*-*-*-*-*-*-*-</li>
+            </template>
+        </ul>
+    </div>
+    <script>
+        const ft = {
+            data(){
+                return{
+                    sites:[
+                        { text:"a" },
+                        { text:"b" },
+                        { text:"c" }
+                    ]
+                }
+            }
+        }
+        Vue.createApp(ft).mount("#fortemplate")
+    </script>
+    <!-- v-for 迭代对象 -->
+    <div id="iteratobject">
+        <ul>
+            <li v-for="value in object">
+                {{ value }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        const iterat = {
+            data(){
+                return{
+                    object:{
+                        name:"百度引擎",
+                        url:"https://www.baidu.com",
+                        slogan:"一起搜搜搜"
+                    }
+                }
+            }
+        }
+        Vue.createApp(iterat).mount("#iteratobject")
+    </script>
+    <!-- 两个参数 -->
+    <div id="secondparagram">
+        <ul>
+            <li v-for="(value,name) in object">
+                {{ name }} : {{ value }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        const twoparagram = {
+            data(){
+                return{
+                    object:{
+                        name:"百度引擎",
+                        url:"https://www.baidu.com",
+                        slogan:"一起搜搜搜"
+                    }
+                }
+            }
+        }
+        Vue.createApp(twoparagram).mount("#secondparagram")
+    </script>
+    <!-- 三个参数 -->
+    <div id="threeparagram">
+        <ul>
+            <li v-for="(value,key,index) in object">
+                {{ index }}.{{ key }} : {{ value }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        const threeparagram = {
+            data(){
+                return{
+                    object:{
+                        name:"百度引擎",
+                        url:"https://www.baidu.com",
+                        slogan:"一起搜搜搜"
+                    }
+                }
+            }
+        }
+        Vue.createApp(threeparagram).mount("#threeparagram")
+    </script>
 </body>
 </html>
