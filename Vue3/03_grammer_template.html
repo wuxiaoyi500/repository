@@ -42,6 +42,17 @@
     <p v-if="see">you see see you, one day day, more fat fat</p>
 </div>
 <br>-*-*-*-*-*-*-*-*-*-*-*-*-*-*-<br>
+<div id="foryou">
+    <ol>
+        <li v-for="site in sites">
+            {{ site.text }}
+        </li>
+    </ol>
+</div>
+<br>-*-*-*-*-*-*-*-*-*-*-*-*-*-*-<br>
+<div id="paragram">
+    <p><a v-bind:href="url">搜索引擎</a></p>
+</div>
 <!--{{...}} 标签的内容将会被替代为对应组件实例中 message 属性的值，如果 message 属性的值发生了改变，{{...}} 标签内容也会更新。-->
 <!--如果不想改变标签的内容，可以通过使用 v-once 指令执行一次性地插值，当数据改变时，插值处的内容不会更新-->
 <!--<span v-once>这个不会改变：{{ messag }}</span>-->
@@ -91,6 +102,7 @@
     }
     Vue.createApp(expression).mount('#expression')
     //指令
+    //v-if指令
     const see = {
         data(){
             return{
@@ -99,6 +111,28 @@
         }
     }
     Vue.createApp(see).mount("#youSee")
+    //v-for指令
+    const foryou = {
+        data(){
+            return{
+                sites:[
+                    {text:"Alibaba"},
+                    {text:"tencent"},
+                    {text:"tiktok"}
+                ]
+            }
+        }
+    }
+    Vue.createApp(foryou).mount("#foryou")
+    //参数
+    const searchlocation = {
+        data(){
+            return{
+                url:'https://www.baidu.com'
+            }
+        }
+    }
+    Vue.createApp(searchlocation).mount("#paragram")
 </script>
 </body>
 </html>
