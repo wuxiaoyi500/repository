@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件语句</title>
+    <script src="js/vue.global.js"></script>
+</head>
+<body>
+    <!--v-if-->
+    <div id="judge">
+        <p v-if="seen">现在你看到我了</p>
+    </div>
+    <script>
+
+        const conditionIf = {
+            data(){
+                return{
+                    seen:true
+                }
+            }
+        }
+        Vue.createApp(conditionIf).mount("#judge")
+    </script>
+
+    <!--more paragrams-->
+    <div id="more">
+        <template v-if="seen">
+            <h1>网站</h1>
+            <p>Google</p>
+            <p>BaiDu</p>
+            <p>Alibaba</p>
+        </template>
+    </div>
+    <script>
+        const moreParam = {
+            data(){
+                return{
+                    seen:true
+                }
+            }
+        }
+        Vue.createApp(moreParam).mount("#more")
+    </script>
+    <!-- v-else -->
+    <div id="ifelse">
+        <div v-if="-10 < number < 0">小亏</div>
+        <div v-else-if="number == 0">不亏</div>
+        <div v-else-if="0 < number < 10">小赚</div>
+    </div>
+    <script>
+        const money = {
+            data(){
+                return{
+                    number:5
+                }
+            }
+        }
+        Vue.createApp(money).mount("#ifelse")
+    </script>
+    <!-- v-show -->
+    <div id="showTime">
+        <h1 v-show="bool"> Show Time</h1>
+    </div>
+    <script>
+        const shower = Vue.createApp({
+            data(){
+                return{
+                    bool: false
+                }
+            }
+        })
+        const vm = shower.mount("#showTime")
+    </script>
+</body>
+</html>

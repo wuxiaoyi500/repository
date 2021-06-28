@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环语句</title>
+    <script src="js/vue.global.js"></script>
+</head>
+<body>
+    <!-- v-for -->
+    <div id="loopstatement">
+        <ul>
+            <li v-for="site in sites">{{ site.text }}</li>
+        </ul>
+    </div>
+    <script>
+        const loop = {
+            data(){
+                return{
+                    sites:[
+                        { text:"BaiDu" },
+                        { text:"Tencent" },
+                        { text:"Alibaba"}
+                    ]
+                }
+            }
+        }
+        Vue.createApp(loop).mount("#loopstatement")
+    </script>
+
+    <!-- second paragram -->
+    <div id="demo02">
+        <ul>
+            <li v-for="(site,index) in sites">
+                {{ index }} - {{ site.text }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        const secondfor = Vue.createApp({
+            data(){
+                return{
+                    sites: [
+                        { text: "JDG" },
+                        { text: "RNG" },
+                        { text: "EDG"}
+                    ]
+                }
+            }
+        }).mount("#demo02")
+    </script>
+</body>
+</html>
