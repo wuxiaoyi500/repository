@@ -15,10 +15,12 @@
 <div id="app">
     <p>{{ message }}</p>
 </div>
+<br>-*-*-*-*-*-*-*-*-*-*-*-*-*-*-<br>
 <div id="example1" class="demo01">
     <p>使用双大括号的文本插值：{{rawHtml}}</p>
     <p>使用v-html指令：<span v-html="rawHtml"></span></p>
 </div>
+<br>-*-*-*-*-*-*-*-*-*-*-*-*-*-*-<br>
 <!--以下实例判断 use 的值，如果为 true 使用 class1 类的样式，否则不使用该类：-->
 <div id="v-bind">
     <label for="r1">修改颜色</label>
@@ -28,6 +30,18 @@
         v-bind:class指令
     </div>
 </div>
+<br>-*-*-*-*-*-*-*-*-*-*-*-*-*-*-<br>
+<div id="expression">
+    {{ 5+5 }}<br>
+    {{ ok ? 'YES' : 'NO' }}<br>
+    {{ message.split('').reverse().join('')}}<br>
+    <div v-bind:id="'list-' + id">vue教程</div>
+</div>
+<br>-*-*-*-*-*-*-*-*-*-*-*-*-*-*-<br>
+<div id="youSee">
+    <p v-if="see">you see see you, one day day, more fat fat</p>
+</div>
+<br>-*-*-*-*-*-*-*-*-*-*-*-*-*-*-<br>
 <!--{{...}} 标签的内容将会被替代为对应组件实例中 message 属性的值，如果 message 属性的值发生了改变，{{...}} 标签内容也会更新。-->
 <!--如果不想改变标签的内容，可以通过使用 v-once 指令执行一次性地插值，当数据改变时，插值处的内容不会更新-->
 <!--<span v-once>这个不会改变：{{ messag }}</span>-->
@@ -64,6 +78,27 @@
         }
     }
     Vue.createApp(app).mount('#v-bind')
+    //表达式
+    //Vue.js 都提供了完全的 JavaScript 表达式支持。
+    const expression = {
+        data(){
+            return{
+                ok:false,
+                message:'you are handsome boy !!',
+                id:0
+            }
+        }
+    }
+    Vue.createApp(expression).mount('#expression')
+    //指令
+    const see = {
+        data(){
+            return{
+                see:true
+            }
+        }
+    }
+    Vue.createApp(see).mount("#youSee")
 </script>
 </body>
 </html>
