@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+    <script src="js/vue.global.js"></script>
+</head>
+<body>
+<!-- 全局组件 -->
+    <!-- 简单组件实例 -->
+    <div id="customComponent">
+        <runoob></runoob>
+    </div>
+    <script>
+        const customComponent = Vue.createApp({})
+        customComponent.component('runoob',{
+            template:"<h1>这是你没见过的全新版本</h1>"
+        })
+        customComponent.mount("#customComponent")
+    </script>
+    <!-- button-counter 组件 -->
+    <div id="click">
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+    </div>
+    <script>
+        const click = Vue.createApp({})
+        click.component('button-counter',{
+            data(){
+                return{
+                    count:0
+                }
+            },template: '<button v-on:click="count++">点击了{{count}}次</button>'
+        })
+        click.mount("#click")
+    </script>
+</body>
+</html>
