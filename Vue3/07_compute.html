@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+    <script src="js/vue.global.js"></script>
+</head>
+<body>
+    <!--普通的计算属性方法-->
+    <div id="normalReverse">
+        原字符串：{{ message }}<br>
+        反转字符串：{{ message.split("").reverse().join("") }}
+    </div>
+    <script>
+        const normalReverse = Vue.createApp({
+            data(){
+                return{
+                    message:"ZengYuQiang"
+                }
+            }
+        })
+        normalReverse.mount("#normalReverse")
+    </script>
+    <!--加入了计算属性的方法-->
+    <div id="computeReverse">
+        <p>原字符串：{{ message }}</p>
+        <p>compute反转字符串：{{ reverseMessage }}</p>
+        <p>method反转字符串：{{ reverseMessage2() }}</p>
+    </div>
+    <script>
+        const computeReverse = Vue.createApp({
+            data(){
+                return{
+                    message:"ZengYuQiang"
+                }
+            },computed:{
+                reverseMessage:function () {
+                    return this.message.split("").reverse().join("")
+                }
+            },methods:{
+                reverseMessage2:function () {
+                    return this.message.split("").reverse().join("")
+                }
+            }
+        })
+
+        computeReverse.mount("#computeReverse")
+    </script>
+    <!-- computed setter -->
+    <div id="computedSetter"></div>
+    <script>
+        const computedSetter = Vue.createApp({
+            data(){
+                return{
+                    name:"BaiDu",
+                    url:"https://www.baidu.com"
+                }
+            },computed: {
+                site:{
+                    get:function () {
+                        return this.name + " " + this.url
+                    },
+                    set:function (newValue) {
+                        var names = newValue.split(" ")
+                        this.name = names[0]
+                        this.url = names[names.length - 1]
+
+                    }
+                }
+            }
+        })
+        const vm = computedSetter.mount("#computedSetter")
+        document.write("name: " + vm.name)
+        document.write("<br>")
+        document.write("url: " + vm.url)
+        document.write("<br>")
+
+        vm.site = "Tiktok https://www.baidu.com"
+        document.write("name: " + vm.name)
+        document.write("<br>")
+        document.write("url: " + vm.url)
+        document.write("<br>")
+    </script>
+</body>
+</html>

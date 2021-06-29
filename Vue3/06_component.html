@@ -51,6 +51,42 @@
         localComponent.mount("#localComponent")
     </script>
 
+    <!--prop-->
+    <div id="sonCom">
+        <site-name title="Tencent"></site-name>
+        <site-name title="Alibaba"></site-name>
+        <site-name title="Tiktok"></site-name>
+    </div>
+    <script>
+        const sonCom = Vue.createApp({})
+        sonCom.component('site-name',{
+            props:['title'],
+            template:'<h4>{{ title }}</h4>'
+        })
+        sonCom.mount('#sonCom')
+    </script>
+    <!--动态prop-->
+    <div id="dynamicProp">
+        <site-info v-for="site in sites" v-bind:id="site.id" v-bind:title="site.title"></site-info>
+    </div>
+    <script>
+        const dynamicProp = Vue.createApp({
+            data(){
+                return{
+                    sites:[
+                        { id: 1, title: "Tencent"},
+                        { id: 2, title: "Alibaba"},
+                        { id: 3, title: "Tiktok"}
+                    ]
+                }
+            }
+        })
+        dynamicProp.component('site-info',{
+            props: ['id','title'],
+            template:'<h4>{{ id }} - {{ title }}</h4>'
+        })
+        dynamicProp.mount("#dynamicProp")
+    </script>
 
 </body>
 </html>

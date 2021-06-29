@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>监听属性</title>
+    <script src="js/vue.global.js"></script>
+</head>
+<body>
+    <!--计数器-->
+    <div id="counter">
+        <button v-on:click="number++" style="font-size: 15px">{{ number }}次</button>
+    </div>
+    <script>
+        const counter = Vue.createApp({
+            data(){
+                return{
+                    number:0
+                }
+            }
+        })
+        const vm = counter.mount("#counter")
+        vm.$watch('number',function (nval,oval) {
+            alert("本来是"+oval+", 现在是"+nval)
+        })
+    </script>
+</body>
+</html>
