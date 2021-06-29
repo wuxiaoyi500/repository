@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>样式绑定</title>
+    <script src="js/vue.global.js"></script>
+    <style>
+        .active{
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="styleBinding">
+        <div v-bind:class="{'active':isActive}"></div>
+    </div>
+    <script>
+        const styleBinding = {
+            data(){
+                return{
+                    isActive:true
+                }
+            }
+        }
+        Vue.createApp(styleBinding).mount("#styleBinding")
+    </script>
+</body>
+</html>

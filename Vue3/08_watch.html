@@ -23,5 +23,34 @@
             alert("本来是"+oval+", 现在是"+nval)
         })
     </script>
+    <!-- 千米和米的换算 -->
+    <div id="meterConversion">
+        千米：<input type="number" v-model="kilometer">
+        米：<input type="number" v-model="meter">
+    </div>
+    <p id="info"></p>
+    <script>
+        const meterConversion = {
+            data(){
+                return{
+                    kilometer:0,
+                    meter:0
+                }
+            },watch:{
+                kilometer: function (val) {
+                    this.kilometer = val;
+                    this.meter = val * 1000;
+                },
+                meter:function (val) {
+                    this.kilometer = val/1000;
+                    this.meter = val;
+                }
+            }
+        }
+        const mc = Vue.createApp(meterConversion).mount("#meterConversion")
+        mc.$watch('kilometer',function (nval,oval) {
+            document.getElementById("info").innerHTML = "修改前为："+oval+", 修改后为："+nval;
+        })
+    </script>
 </body>
 </html>
