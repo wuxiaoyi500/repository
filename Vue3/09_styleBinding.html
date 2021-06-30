@@ -5,26 +5,163 @@
     <title>样式绑定</title>
     <script src="js/vue.global.js"></script>
     <style>
+        .static{
+            width:100px;
+            height:100px;
+        }
         .active{
-            width: 100px;
-            height: 100px;
             background: pink;
+        }
+        .text-danger{
+            background: yellow;
+
         }
     </style>
 </head>
 <body>
+    <!--多个class属性绑定-->
+<!--    <div id="styleBinding">-->
+<!--        <div class="static" v-bind:class="{'active':isActive,'text-danger':hasError}" ></div>-->
+<!--    </div>-->
+<!--    <script>-->
+<!--        const styleBinding = Vue.createApp({-->
+<!--            data(){-->
+<!--                return{-->
+<!--                    isActive:true,-->
+<!--                    hasError:false-->
+<!--                }-->
+<!--            }-->
+<!--        })-->
+<!--        styleBinding.mount("#styleBinding")-->
+<!--    </script>-->
+    <!--直接绑定数据对象-->
+<!--    <div id="styleBinding">-->
+<!--        <div class="static" v-bind:class="classObject" ></div>-->
+<!--    </div>-->
+<!--    <script>-->
+<!--        const styleBinding = Vue.createApp({-->
+<!--            data(){-->
+<!--                return{-->
+<!--                    classObject:{-->
+<!--                        'active':false,-->
+<!--                        'text-danger':true-->
+<!--                    }-->
+<!--                }-->
+<!--            }-->
+<!--        })-->
+<!--        styleBinding.mount("#styleBinding")-->
+<!--    </script>-->
+
+<!--    &lt;!&ndash;直接返回对象的计算属性&ndash;&gt;-->
+<!--    <div id="styleBinding">-->
+<!--        <div class="static" v-bind:class="classObject" ></div>-->
+<!--    </div>-->
+<!--    <script>-->
+<!--        const styleBinding = Vue.createApp({-->
+<!--            data(){-->
+<!--                return{-->
+
+<!--                        isActive:false,-->
+<!--                        error:false-->
+
+<!--                }-->
+<!--            },computed:{-->
+<!--                classObject(){-->
+<!--                    return{-->
+<!--                        'active': this.isActive && this.error,-->
+<!--                        'text-danger': !this.isActive && !this.error,-->
+<!--                    }-->
+<!--                }-->
+<!--            }-->
+<!--        })-->
+<!--        styleBinding.mount("#styleBinding")-->
+<!--    </script>-->
+<!--    &lt;!&ndash;数组语法&ndash;&gt;-->
+<!--    <div id="styleBinding">-->
+<!--        <div class="static" v-bind:class="[isActive, error]" ></div>-->
+<!--    </div>-->
+<!--    <script>-->
+<!--        const styleBinding = Vue.createApp({-->
+<!--            data(){-->
+<!--                return{-->
+
+<!--                    isActive:'active',-->
+<!--                    error:'text-danger'-->
+
+<!--                }-->
+<!--            }-->
+<!--        })-->
+<!--        styleBinding.mount("#styleBinding")-->
+<!--    </script>-->
+    <!--使用三元表达式-->
     <div id="styleBinding">
-        <div v-bind:class="{'active':isActive}"></div>
+        <div class="static" v-bind:class="[isActive ? activeClass : errorClass]" ></div>
     </div>
     <script>
-        const styleBinding = {
+        const styleBinding = Vue.createApp({
             data(){
                 return{
-                    isActive:true
+
+                    isActive:false,
+                    activeClass:'active',
+                    errorClass:'text-danger'
+
                 }
             }
-        }
-        Vue.createApp(styleBinding).mount("#styleBinding")
+        })
+        styleBinding.mount("#styleBinding")
+    </script>
+    <!--内联样式-->
+    <div id="innerStyle">
+        <div v-bind:style="{color: activeColor, fontsize: activeSize + 'px'}">学一手Vue</div>
+    </div>
+    <script>
+        const innerStyle = Vue.createApp({
+            data(){
+                return{
+                    activeColor:"pink",
+                    activeSize:30
+                }
+            }
+        })
+        innerStyle.mount("#innerStyle")
+    </script>
+    <!--绑定对象模板-->
+    <div id="styleObject">
+        <div v-bind:style="styleObject">学二手Vue</div>
+    </div>
+    <script>
+        const styleObject = Vue.createApp({
+            data(){
+                return{
+                    styleObject:{
+                        fontsize:'100px',
+                            color:"red"
+                    }
+                }
+            }
+        })
+        styleObject.mount("#styleObject")
+    </script>
+    <!--绑定数组对象-->
+    <div id="arrayStyleBinding">
+        <div v-bind:style="[fontStyle,borderStyle]">学三手Vue</div>
+    </div>
+    <script>
+        const asb = Vue.createApp({
+            data(){
+                return{
+                    fontStyle:{
+                        fontsize: '80px',
+                        color: 'blue'
+                    },
+                    borderStyle:{
+                        fontWeight:'bold'
+                    }
+                }
+            }
+        })
+        asb.mount("#arrayStyleBinding")
     </script>
 </body>
 </html>
