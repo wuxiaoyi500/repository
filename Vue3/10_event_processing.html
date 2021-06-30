@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理</title>
+    <script src="js/vue.global.js"></script>
+</head>
+<body>
+    <div id="eventDemo01">
+        <button  v-on:click="count++">加一</button>
+        <p>这个按钮被点击了{{ count }}次</p>
+    </div>
+    <script>
+        const eventDemo01 = Vue.createApp({
+            data(){
+                return{
+                    count:0
+                }
+            }
+        })
+        eventDemo01.mount("#eventDemo01")
+    </script>
+    <!--v-on接受定义方法调用JavaScript方法-->
+    <div id="customMethod">
+        <!-- `greet` 是在下面定义的方法名 -->
+        <button v-on:click="greet">点我</button>
+    </div>
+    <script>
+        const cm = Vue.createApp({
+            data(){
+                return{
+                    name:"zyq"
+                }
+            },
+            methods:{
+                greet(event){
+                    // `methods` 内部的 `this` 指向当前活动实例
+                    alert("hello "+this.name)
+                    if (event){
+                        // `event` 是原生 DOM event
+                        alert(event.target.tagName)
+                    }
+                }
+            }
+        })
+        cm.mount("#customMethod")
+    </script>
+    <!--内联 JavaScript 语句-->
+    <div id="innerJS">
+        <button v-on:click="say('hi')">say hi</button>
+        <button v-on:click="say('fuck')">say fuck</button>
+    </div>
+    <script>
+        const innerJS = Vue.createApp({
+            data(){},
+            methods:{
+                say(message){
+                    alert(message)
+                }
+            }
+        })
+        innerJS.mount("#innerJS")
+    </script>
+
+    <div id="moreMethod">
+        <button v-on:click="one(event),two(event)">点我</button>
+        <button v-on:click="one(event),two(event)">再点我</button>
+    </div>
+    <script>
+        const mm = Vue.createApp({
+            data(){},
+            methods:{
+                one(event){
+                    alert("老子回来了")
+                },
+                two(event){
+                    alert("老子又回来了")
+                }
+
+            }
+        })
+        mm.mount("#moreMethod")
+    </script>
+
+
+</body>
+</html>

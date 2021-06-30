@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+    <script src="js/vue.global.js"></script>
+</head>
+<body>
+<!-- v-model 实现双向数据绑定 -->
+    <div id="dataBinding">
+        <p>input元素</p>
+        <input v-model="message" placeholder="请输入单行文本...">
+        <p>input表单消息是：{{ message }}</p>
+        <p>多行文本输入</p>
+        <textarea v-model="message2" placeholder="多行文本输入..."></textarea>
+        <p>textarea表单消息是：</p>
+        <p style="white-space: pre">{{ message2 }}</p>
+    </div>
+    <script>
+        const db = Vue.createApp({
+            data(){
+                return{
+                    message:'zyq',
+                    message2:'百度首页\r\nhttps://www.baidu.com'
+                }
+            }
+        })
+        db.mount("#dataBinding")
+    </script>
+<!--复选框的双向数据绑定-->
+    <div id="checkBox">
+        <p>单个复选框</p>
+        <input type="checkbox" id="singleBox" v-model="checked">
+        <label for="singleBox">{{ checked }}</label>
+        <p>多个复选框</p>
+        <input type="checkbox" id="tencent" value="Tencent" v-model="checkedNames">
+        <label for="tencent">Tencent</label>
+        <input type="checkbox" id="alibaba" value="Alibaba" v-model="checkedNames">
+        <label for="alibaba">Alibaba</label>
+        <input type="checkbox" id="tiktok" value="Tiktok" v-model="checkedNames">
+        <label for="tiktok">Tiktok</label>
+        <br>
+        <span>选中的值为:{{ checkedNames }}</span>
+    </div>
+    <script>
+        const cb = {
+            data(){
+                return{
+                    checked:false,
+                    checkedNames:[]
+                }
+            }
+        }
+        Vue.createApp(cb).mount("#checkBox")
+    </script>
+<!--单选的双向数据绑定-->
+    <div id="singleButton">
+        <input type="radio" id="baidu" value="Baidu" v-model="picked">
+        <label for="baidu">Baidu</label>
+        <input type="radio" id="mihoyo" value="Mihoyo" v-model="picked">
+        <label for="mihoyo">Mihoyo</label>
+        <p>选中的是：{{ picked }}</p>
+    </div>
+    <script>
+        const sb = Vue.createApp({
+            data(){
+                return{
+                    pickec:'Mihoyo'
+                }
+            }
+        })
+        sb.mount("#singleButton")
+    </script>
+
+</body>
+</html>

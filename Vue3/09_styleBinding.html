@@ -170,8 +170,22 @@
     <script>
         const componentClass = Vue.createApp({})
         componentClass.component('runoob',{
-            template:'<h1 class'
+            template:'<h1 class="classC classD">vue</h1>'
         })
+        componentClass.mount("#componentClass")
+    </script>
+
+    <div id="moreClass">
+        <runoob class="classA"></runoob>
+        <runoob></runoob>
+    </div>
+    <script>
+        const mc = Vue.createApp({})
+        mc.component('runoob',{
+            template:`<p v-bind:class="$attrs.class">I Love Vue !</p>
+                    <span>这是一个子组件</span>`
+        })
+        mc.mount("#moreClass")
     </script>
 </body>
 </html>
