@@ -163,5 +163,15 @@
         })
         asb.mount("#arrayStyleBinding")
     </script>
+    <!--组件上使用class属性-->
+    <div id="componentClass">
+        <runoob class="classA,classB"></runoob>
+    </div>
+    <script>
+        const componentClass = Vue.createApp({})
+        componentClass.component('runoob',{
+            template:'<h1 class'
+        })
+    </script>
 </body>
 </html>
