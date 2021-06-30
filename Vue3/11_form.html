@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/XSL/Transform" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>表单</title>
@@ -59,18 +59,42 @@
         <label for="baidu">Baidu</label>
         <input type="radio" id="mihoyo" value="Mihoyo" v-model="picked">
         <label for="mihoyo">Mihoyo</label>
-        <p>选中的是：{{ picked }}</p>
+        <br>
+        <span>选中的是：{{ picked }}</span>
     </div>
     <script>
-        const sb = Vue.createApp({
+        const sb = {
             data(){
                 return{
-                    pickec:'Mihoyo'
+                    picked:'Mihoyo'
+                }
+            }
+        }
+        Vue.createApp(sb).mount("#singleButton")
+    </script>
+<!--select列表-->
+    <div id="selectForm">
+        <select v-model="selected" name="fruit">
+            <option value="">请选择一个网站</option>
+            <option value="https://www.baidu.com">百度</option>
+            <option value="https://www.tencent.com">腾讯</option>
+            <option value="https://www.taobao.com">阿里</option>
+        </select>
+        <div>网址：{{ selected }}</div>
+    </div>
+
+    <script>
+        const selectForm = Vue.createApp({
+            data(){
+                return{
+                    selected:''
                 }
             }
         })
-        sb.mount("#singleButton")
+        selectForm.mount("#selectForm")
     </script>
+
+
 
 </body>
 </html>
