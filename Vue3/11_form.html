@@ -93,8 +93,25 @@
         })
         selectForm.mount("#selectForm")
     </script>
-
-
+<!-- select多选 -->
+    <div id="selectedMutiple">
+        <select v-model="selected" name="fruit" multiple>
+            <option value="https://www.baidu.com">百度</option>
+            <option value="https://www.tencent.com">腾讯</option>
+            <option value="https://www.taobao.com">阿里</option>
+        </select>
+        <div>网址是：{{ selected }}</div>
+    </div>
+    <script>
+        const sM = Vue.createApp({
+            data(){
+                return{
+                    selected:''
+                }
+            }
+        })
+        sM.mount("#selectedMutiple")
+    </script>
 
 </body>
 </html>
