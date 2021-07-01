@@ -112,6 +112,30 @@
         })
         sM.mount("#selectedMutiple")
     </script>
+<!--使用v-for循环输出-->
+    <div id="forSelected">
+        <select v-model="selected" name="fruit">
+            <option v-for="option in options" v-bind:value="option.site">
+                {{ option.name }}
+            </option>
+        </select>
+        <p>选择的网址是：{{ selected }}</p>
+    </div>
+    <script>
+        const fs = Vue.createApp({
+            data(){
+                return{
+                    selected:'https://www.baidu.com',
+                    options:[
+                        {name:'百度',site:"https://www.baidu.com"},
+                        {name:'腾讯',site:"https://www.tencent.com"},
+                        {name:'阿里',site:"https://www.alibaba.com"}
+                    ]
+                }
+            }
+        })
+        fs.mount("#forSelected")
+    </script>
 
 </body>
 </html>
