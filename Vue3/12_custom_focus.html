@@ -31,17 +31,48 @@
     <script>
         const localIns = Vue.createApp({
             data(){
-                return{}
+                return{
+
+                }
             },
             directives:{
                 focus2:{
-                    mounted(el){
+                    mounted(el) {
                         el.focus()
                     }
                 }
             }
         })
         localIns.mount("#localInstruction")
+    </script>
+    <!--钩子函数-->
+    <div id="hook">
+        <div v-runoob="{name:'Vue',url:'www.vue.com'}"></div>
+    </div>
+    <script>
+        const hookM = Vue.createApp({})
+        hookM.directive('runoob',(el,binding,vnode)=>{
+            console.log(binding.value.name)
+            console.log(binding.value.url)
+            var s = JSON.stringify
+            el.innerHTML = s(binding.value)
+        })
+        hookM.mount("#hook")
+    </script>
+    <!--指令函数-->
+    <div id="insFunction">
+        <div v-runoob="{color:'pink',text:'猛男粉'}"></div>
+    </div>
+    <script>
+        const insFunction = Vue.createApp({})
+        insFunction.directive('runoob',function (el,binding) {
+            el.innerHTML = binding.value.text
+            el.style.backgroundColor = binding.value.color
+        })
+        // new Vue({
+        //     el:'#insFunction'
+        // })
+        insFunction.mount("#insFunction")
     </script>
 </body>
 </html>
