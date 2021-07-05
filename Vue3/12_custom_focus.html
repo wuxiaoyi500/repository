@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <script src="js/vue.global.js"></script>
+</head>
+<body>
+    <!--全局指令-->
+    <div id="autoFocus">
+        <p>页面载入时，input自动获得焦点</p>
+        <input v-focus>
+    </div>
+    <script>
+        const autoFocus = Vue.createApp({})
+        // 注册一个全局自定义指令 `v-focus`
+        autoFocus.directive('focus',{
+            // 当被绑定的元素挂载到 DOM 中时……
+            mounted(el){
+                // 聚焦元素
+                el.focus()
+            }
+        })
+        // autoFocus.mount("#autoFocus")
+    </script>
+    <!--局部指令-->
+    <div id="localInstruction">
+        <p>局部指令</p>
+        <input v-focus2>
+    </div>
+    <script>
+        const localIns = Vue.createApp({
+            data(){
+                return{}
+            },
+            directives:{
+                focus2:{
+                    mounted(el){
+                        el.focus()
+                    }
+                }
+            }
+        })
+        localIns.mount("#localInstruction")
+    </script>
+</body>
+</html>
