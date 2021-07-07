@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>混入</title>
+    <script src="js/vue.global.js"></script>
+</head>
+<body>
+    <div id="minis"></div>
+    <script type="text/javascript">
+        // 定义混入对象
+        const myMinis = {
+            created(){
+                this.hello()
+            },
+            methods:{
+                hello(){
+                    document.write("Vue minis")
+                }
+            }
+        }
+        // 定义一个应用，使用混入
+        const app = Vue.createApp({
+            mixins:[myMinis]
+        })
+        app.mount("#minis")
+    </script>
+
+    <!--选项合并-->
+    <div id="mixnis"></div>
+    <script type="text/javascript"></script>
+</body>
+</html>
