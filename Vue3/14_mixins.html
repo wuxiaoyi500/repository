@@ -28,6 +28,77 @@
 
     <!--选项合并-->
     <div id="mixnis"></div>
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+        const myMixnis = {
+            data(){
+                return{
+                    message:"message",
+                    info:"info"
+                }
+            }
+        }
+        const abb = Vue.createApp({
+            mixins:[myMixnis],
+            data(){
+                return{
+                    CC:"CC",
+                    message:"m2",
+                    bar:"bar"
+                }
+            },
+            created() {
+                document.write(JSON.stringify(this.$data))
+            }
+        })
+        abb.mount("#minis")
+    </script>
+    <!--值为对象的混入-->
+    <div id="hook"></div>
+    <script type="text/javascript">
+        const myMixin = {
+            methods: {
+                foo() {
+                    console.log('foo')
+                },
+                conflicting() {
+                    console.log('from mixin')
+                }
+            }
+        }
+
+        const acc = Vue.createApp({
+            mixins: [myMixin],
+            methods: {
+                bar() {
+                    console.log('bar')
+                },
+                conflicting() {
+                    console.log('from self')
+                }
+            }
+        })
+
+        const vm = acc.mount('#hook')
+
+        vm.foo() // => "foo"
+        vm.bar() // => "bar"
+        vm.conflicting() // => "from self"
+    </script>
+    <!--全局混入对象-->
+    <div id="localMixins"></div>
+    <script type="text/javascript">
+        const localOption = Vue.createApp({
+            myOption:"fuck you"
+        })
+        localOption.mixin({
+            created(){
+                const myOption = this.$options.myOption
+                if (myOption){
+                    document.write(myOption)
+                }
+            }
+        })
+        localOption.mount("#localMixins")
+    </script>
 </body>
 </html>
