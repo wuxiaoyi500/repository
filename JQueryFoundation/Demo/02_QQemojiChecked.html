@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QQ表情选择</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <style type="text/css">
+        *{margin:0;paddind:0;list-style: none}
+        .emoji{margin: 50px}
+        ul{overflow: hidden}
+        li{float: left;width: 50px;height:50px;cursor: pointer}
+        .emoji img{cursor: pointer}
+        .word img{padding: 5px}
+    </style>
+    <script>
+        //需求：点击qq表情，将其追加到发言框中
+        $(function () {
+            $("ul img").click(function () {
+                $(this).clone().appendTo($(".word"))
+            })
+        })
+    </script>
+</head>
+<body>
+    <ul class="emoji">
+        <li><img src="img/01.gif" height="22" width="22" alt=""></li>
+        <li><img src="img/02.gif" height="22" width="22" alt=""></li>
+        <li><img src="img/03.gif" height="22" width="22" alt=""></li>
+        <li><img src="img/04.gif" height="22" width="22" alt=""></li>
+        <li><img src="img/05.gif" height="22" width="22" alt=""></li>
+        <li><img src="img/06.gif" height="22" width="22" alt=""></li>
+        <li><img src="img/07.gif" height="22" width="22" alt=""></li>
+        <li><img src="img/08.gif" height="22" width="22" alt=""></li>
+    </ul>
+    <p class="word">
+        <strong>请选择：</strong>
+        <img src="img/09.gif" height="22" width="22" alt="">
+        <img src="img/10.gif" height="22" width="22" alt="">
+        <img src="img/11.gif" height="22" width="22" alt="">
+        <img src="img/12.gif" height="22" width="22" alt="">
+    </p>
+</body>
+</html>
