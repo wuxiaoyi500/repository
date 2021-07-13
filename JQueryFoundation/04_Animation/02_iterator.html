@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>遍历</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            var citys = $("#city li")
+            //js方法
+            // for (var i = 0;i<citys.length;i++){
+            //     alert(i+":"+citys[i].innerHTML)
+            // }
+            //jq方法一
+            //获取li对象第一种方式：this
+            // citys.each(function () {
+            //
+            //     alert(this.innerHTML)
+            //
+            // })
+            //获取li对象第二种方式：在回调函数中定义参数：index：element
+            // citys.each(function (index,element) {
+            //     // alert(index+":"+element.innerHTML)
+            //     //判断：如果为南昌则结束循环
+            //     if ("南昌" == $(element).html()){
+            //         //如果当前function返回值为true 则相当于continue,结束本次循环，开始下一次循环
+            //         //如果返回值为false，则相当于break，结束循环
+            //         return true
+            //     }
+            //     alert(index+":"+$(element).html())
+            // })
+            //jq方法二
+            $.each(citys,function (index,element) {
+                alert(index+":"+$(element).html())
+            })
+            //jq方法三
+            //for ... of:jquery 3.0 版本之后提供的方式
+            // for (li of citys){
+            //     alert($(li).html())
+            // }
+        })
+    </script>
+</head>
+<body>
+    <ul id="city">
+        <li>北京</li>
+        <li>上海</li>
+        <li>广州</li>
+        <li>深圳</li>
+        <li>南昌</li>
+        <li>长沙</li>
+        <li>武汉</li>
+    </ul>
+</body>
+</html>

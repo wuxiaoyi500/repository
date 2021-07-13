@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过on绑定事件</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        //通过on绑定click事件
+        $(function () {
+            $("#bt1").on("click",function () {
+                alert("我绑定了click")
+            })
+        })
+        $(function () {
+            $("#bt2").on("click",function () {
+                alert("我绑定了click,但是马上解除")
+                // $("#bt2").off("click")
+                $("#bt2").off()//将组件所有事件解绑
+            })
+        })
+    </script>
+</head>
+<body>
+<input type="button" id="bt1" value="通过on绑定事件">
+<input type="button" id="bt2" value="通过off解绑事件">
+</body>
+</html>
