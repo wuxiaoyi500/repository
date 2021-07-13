@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抽奖</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script language='javascript' type='text/javascript'>
+        var imgs = ["img/man01.jpg",
+                    "img/man02.jpg",
+                    "img/man03.jpg",
+                    "img/man04.jpg",
+                    "img/man05.jpg",
+                    "img/man06.jpg",
+                    "img/man07.jpg"
+                    ]
+        var startId;
+        var index;
+        $(function () {
+            $("#startID").prop("disabled",false)
+            $("#stopID").prop("disabled",true)
+            startId = setInterval(function () {
+                $("#startID").prop("disabled",true)
+                $("#stopID").prop("disabled",false)
+
+                index = Math.floor(Math.random() * 7)
+                $("#img1ID").prop("src",imgs[index])
+            },20)
+            $("#stopID").click(function () {
+                $("#startID").prop("disabled",false)
+                $("#stopID").prop("disabled",true)
+                clearInterval(startId)
+                $("#img2ID").prop("src",imgs[index]).hide()
+                $("#img2ID").show(1000)
+            })
+        })
+    </script>
+</head>
+<body>
+<div style="border-style: dotted;width: 160px;height: 100px">
+    <img id="img1ID" src="img/man00.jpg" style="width: 160px;height: 100px">
+</div>
+<div style="border-style: double;width: 800px;height: 500px;position: absolute;left: 500px;top: 10px">
+    <img id="img2ID" src="img/man00.jpg" style="width: 800px;height: 500px">
+</div>
+<input id="startID" type="button" value="开始" style="width: 150px;height: 150px;font-size: 22px">
+<input id="stopID" type="button" value="停止" style="width: 150px;height: 150px;font-size: 22px">
+</body>
+</html>
