@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $.extend({
+            max:function (a,b) {
+                return a > b ? a : b
+            },
+            min:function (a,b) {
+                return a > b ? b : a
+            }
+        })
+        var max = $.max(3,4)
+        // alert(max)
+        var min = $.min(3,4)
+        alert(min)
+    </script>
+</head>
+<body>
+
+</body>
+</html>
