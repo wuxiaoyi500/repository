@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQ对象进行方法拓展</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $.fn.extend({
+            check:function () {
+                this.prop("checked",true)
+            },
+            uncheck:function () {
+                this.prop("checked",false)
+            }
+        })
+        $(function () {
+            $("#btn_checked").click(function () {
+                $("input[type='checkbox']").check()
+            })
+            $("#btn-unchecked").click(function () {
+                $("input[type='checkbox']").uncheck()
+            })
+        })
+    </script>
+</head>
+<body>
+<input type="button" id="btn_checked" value="select all">
+<input type="button" id="btn-unchecked" value="select none">
+<br>
+<input type="checkbox" value="football" >足球
+<input type="checkbox" value="basketball">篮球
+<input type="checkbox" value="vollaball">排球
+</body>
+</html>
