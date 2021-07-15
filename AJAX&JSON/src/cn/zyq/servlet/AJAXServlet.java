@@ -11,13 +11,14 @@ import java.io.IOException;
 public class AJAXServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
+        String age = request.getParameter("age");
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(username);
-        response.getWriter().write("hello"+":"+username);
+        System.out.println(username+age);
+        response.getWriter().write("hello"+":"+username+",happy for your: "+age);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

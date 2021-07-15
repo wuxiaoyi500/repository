@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.FileWriter;
 
 public class JacksonTest {
     //java对象转为JSON字符
@@ -31,9 +32,10 @@ public class JacksonTest {
                 writeValueAsString(obj):将对象转为json字符串
 
          */
-        //将obj对象转换为JSON字符串，并保存到指定的文件中
-        mapper.writeValue(new File("json.txt"),json);
-        //将obj对象转换为JSON字符串，并将json数据填充到字符输出流中
+        //writeValue，将数据写到d://json.txt文件中
+        mapper.writeValue(new File("j.txt"),person);
+        //writeValue.将数据关联到Writer中
+        mapper.writeValue(new FileWriter("js.txt"),person);
     }
     @Test
     public void test2() throws Exception {
