@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON数据语法</title>
+    <script>
+        //1.基本格式
+        var person1 = {"name":"zhangsan","age":18}
+        // alert(person.name+person.age)
+        // alert(person["name"]+person["age"])
+        //2.嵌套格式 {}———> []
+        var person2 = {
+            persons:[
+                {"name":"zhangsan","age":18},
+                {"name":"lisi","age":19},
+                {"name":"wangwu","age":17}
+            ]
+        }
+        //获取lisi值,索引从1开始
+        // alert(person2.persons[1].name)
+        //2.嵌套格式 []———> {}
+        var person3 = [{"name":"张三","age":17},{"name":"李四","age":18},{"name":"王五","age":19}]
+        //获取王五值，索引从0开始
+        alert(person3[2].name)
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

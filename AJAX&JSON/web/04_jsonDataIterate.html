@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON数据语法——遍历</title>
+</head>
+<body>
+    <script>
+        var person = {"name":"张三","age":18,"gender":"male"}
+        var ps = [
+            {"name":"张三","age":17,"gender":"male"},
+            {"name":"李四","age":18,"gender":"male"},
+            {"name":"王五","age":19,"gender":"female"}
+        ]
+        for(var key in person){
+            //key相当于字符串例如："name"
+            alert(key +":"+ person[key])
+        }
+        for (var i = 0 ; i < ps.length ; i++){
+            var p = ps[i]
+            for(var key in p){
+                // alert(key+":"+p[key])
+            }
+        }
+    </script>
+</body>
+</html>
