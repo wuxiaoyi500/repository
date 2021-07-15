@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQ实现Ajax</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        function fcn() {
+            $.ajax({
+                url:"ajaxServlet",
+                type:"POST",
+                data:{"username":"jack","age":18},
+                success:function (data) {
+                    alert(data)
+                },
+                error:function () {
+                    alert("出错了")
+                },
+                dataType:"text"
+            })
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="异步请求" onclick="fcn()">
+<input type="text">
+</body>
+</html>
