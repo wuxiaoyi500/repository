@@ -19,7 +19,7 @@ public class JacksonTest {
         ObjectMapper mapper = new ObjectMapper();
         //3.转换
         String json = mapper.writeValueAsString(person);
-//        System.out.println(json);
+        System.out.println(json);
          /*
 
             转换方法：
@@ -32,7 +32,7 @@ public class JacksonTest {
 
          */
         //将obj对象转换为JSON字符串，并保存到指定的文件中
-//        mapper.writeValue(new File("json.txt"),json);
+        mapper.writeValue(new File("json.txt"),json);
         //将obj对象转换为JSON字符串，并将json数据填充到字符输出流中
     }
     @Test
