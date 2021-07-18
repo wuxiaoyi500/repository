@@ -1,9 +1,17 @@
 package cn.zyq.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.Date;
+
 public class Person {
     private String name;
     private int age;
     private String gender;
+//    @JsonIgnore//忽略参数
+    @JsonFormat(pattern = "yy-MM-dd")
+    private Date date;
 
     @Override
     public String toString() {
@@ -11,7 +19,16 @@ public class Person {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
+                ", date=" + date +
                 '}';
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getName() {
