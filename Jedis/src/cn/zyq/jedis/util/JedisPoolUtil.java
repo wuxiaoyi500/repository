@@ -13,7 +13,7 @@ public class JedisPoolUtil {
     private static JedisPool jedisPool;
     static {
         //加载配置文件
-        InputStream is = JedisPoolUtil.class.getClassLoader().getResourceAsStream("Jedis.propertise");
+        InputStream is = JedisPoolUtil.class.getClassLoader().getResourceAsStream("Jedis.properties");
         Properties properties = new Properties();
         //关联文件
         try {
