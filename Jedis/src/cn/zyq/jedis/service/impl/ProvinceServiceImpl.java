@@ -10,4 +10,9 @@ public class ProvinceServiceImpl implements ProvinceService {
     public List<Province> findAll() {
         return null;
     }
+
+    @Override
+    public String findAllJson() {
+        return null;
+    }
 }
