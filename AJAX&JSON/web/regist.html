@@ -3,8 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>注册页面</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $("#username").blur(function () {
+                var username = $(this).val()
+                var span = $("span")
+                $.get("findUserServlet",{username:username},function (data) {
+                    if (data.userExit){
+                        span.css("color","red")
+                        span.html(data.msg)
+                    }else{
+                        span.css("color","green")
+                        span.html(data.msg)
+                    }
+                })
+            })
+        })
+    </script>
 </head>
 <body>
-
+    <div>
+        <input type="text" id="username" name="username" placeholder="请输入用户名">
+        <span id="s_username"></span>
+    </div>
 </body>
 </html>
