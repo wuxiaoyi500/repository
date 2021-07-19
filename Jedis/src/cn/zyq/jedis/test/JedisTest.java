@@ -1,5 +1,6 @@
 package cn.zyq.jedis.test;
 
+import cn.zyq.jedis.util.JedisPoolUtil;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -99,6 +100,15 @@ public class JedisTest {
         String username = jedis.get("username");
         System.out.println(username);
         //5.关闭连接
+        jedis.close();
+    }
+    @Test
+    //连接池工具类使用
+    public void Test8(){
+        Jedis jedis = JedisPoolUtil.getJedisPool();
+        jedis.set("name","盲仔");
+        String name = jedis.get("name");
+        System.out.println(name);
         jedis.close();
     }
 }
