@@ -2,6 +2,8 @@ package cn.zyq.jedis.test;
 
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
 
 import java.util.List;
 import java.util.Map;
@@ -79,6 +81,24 @@ public class JedisTest {
         jedis.zadd("ms",2,"金克斯");
         Set<String> ms = jedis.zrange("ms", 0, -1);
         System.out.println(ms);
+        jedis.close();
+    }
+    @Test
+    //jedis 连接池对象
+    public void Test7(){
+        //1.创建配置对象
+        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+        jedisPoolConfig.setMaxIdle(50);
+        jedisPoolConfig.setMaxTotal(50);
+        //2.创建连接池对象
+        JedisPool jedisPool = new JedisPool(jedisPoolConfig, "localhost", 6379);
+        //3.获取连接
+        Jedis jedis = jedisPool.getResource();
+        //4.使用
+        jedis.set("username","李青");
+        String username = jedis.get("username");
+        System.out.println(username);
+        //5.关闭连接
         jedis.close();
     }
 }
