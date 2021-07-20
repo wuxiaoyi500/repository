@@ -10,14 +10,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-//Jedis测试类
+/**
+ * jedis的测试类
+ */
 public class JedisTest {
+    /**
+     * 快速入门
+     */
     @Test
     //1.基本操作
     public void Test1(){
         //1.建立连接
         Jedis jedis = new Jedis("localhost", 6379);
-       //2.操作
+        //2.操作
         jedis.del("username");
         //3.关闭连接
         jedis.close();

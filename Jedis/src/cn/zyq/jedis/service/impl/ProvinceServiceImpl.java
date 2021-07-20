@@ -18,4 +18,9 @@ public class ProvinceServiceImpl implements ProvinceService {
     public String findAllJson() {
         return null;
     }
+
+    @Override
+    public String findAllJson() {
+        return null;
+    }
 }

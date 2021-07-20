@@ -14,14 +14,14 @@
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$">
+    <content url="file://$MODULE_DIR$/src">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.48" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.60" level="application_server_libraries" />
     <orderEntry type="module-library">
-      <library name="lib">
+      <library>
         <CLASSES>
           <root url="file://$MODULE_DIR$/web/WEB-INF/lib" />
         </CLASSES>
