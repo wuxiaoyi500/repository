@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>选择</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $.get("provinceServlet",{},function (data) {
+                var select = $("#province")
+                $(data).each(function () {
+                    var option = "<option id='"+this.id+"'>"+this.name+"</option>";
+                    select.append(option)
+                })
+            })
+        })
+    </script>
 </head>
 <body>
-
+<select id="province">
+    <option>--请选择--</option>
+</select>
 </body>
 </html>
