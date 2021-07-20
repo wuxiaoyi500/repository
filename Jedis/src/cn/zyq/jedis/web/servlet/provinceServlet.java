@@ -16,10 +16,12 @@ import java.util.List;
 @WebServlet("/provinceServlet")
 public class provinceServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        ProvinceService service = new ProvinceServiceImpl();
+//        List<Province> provinces = service.findAll();
+//        ObjectMapper mapper = new ObjectMapper();
+//        String provinceJson = mapper.writeValueAsString(provinces);
         ProvinceService service = new ProvinceServiceImpl();
-        List<Province> provinces = service.findAll();
-        ObjectMapper mapper = new ObjectMapper();
-        String provinceJson = mapper.writeValueAsString(provinces);
+        String provinceJson = service.findAllJson();
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(provinceJson);
     }
