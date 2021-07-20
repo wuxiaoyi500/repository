@@ -84,6 +84,7 @@ public class JedisTest {
         System.out.println(ms);
         jedis.close();
     }
+
     @Test
     //jedis 连接池对象
     public void Test7(){

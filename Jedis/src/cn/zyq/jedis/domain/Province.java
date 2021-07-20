@@ -11,7 +11,6 @@ public class Province {
                 ", name='" + name + '\'' +
                 '}';
     }
-
     public int getId() {
         return id;
     }

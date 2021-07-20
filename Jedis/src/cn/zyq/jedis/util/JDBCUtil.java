@@ -23,7 +23,6 @@ public class JDBCUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
     public static DataSource getDataSource(){
         return ds;

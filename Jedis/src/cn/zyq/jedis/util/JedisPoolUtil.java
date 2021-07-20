@@ -16,6 +16,7 @@ public class JedisPoolUtil {
         InputStream is = JedisPoolUtil.class.getClassLoader().getResourceAsStream("Jedis.properties");
         Properties properties = new Properties();
         //关联文件
+
         try {
             properties.load(is);
         } catch (IOException e) {
